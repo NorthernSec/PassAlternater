@@ -48,6 +48,7 @@ if __name__ == '__main__':
   parser.add_argument('-s',    action='store_true',      help='Show statistics')
   parser.add_argument('-v',    action='store_true',      help='Verbose')
   parser.add_argument('-l',    metavar='list', type=str, help='Supply new combination list' )
+  parser.add_argument('-o',    metavar='file', type=str, help='Output file')
   args = parser.parse_args()
 
   # Import new list if requested
@@ -71,4 +72,9 @@ if __name__ == '__main__':
     print("Word length:            %s"%len(args.word))
     print("Number of combinations: %s"%len(wordlist))
   else:
-    print('\n'.join(wordlist))
+    if not args.o or args.v:
+      print('\n'.join(wordlist))
+  # Save to file
+  if args.o:
+    f=open(args.o,'w')
+      f.write('\n'.join(wordlist))
