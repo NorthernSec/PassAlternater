@@ -10,6 +10,7 @@
 # Imports
 from itertools import product
 import argparse
+import fileinput
 
 # Variables
 leetlist=[['a','A','@','4'],['b','B','8'],['c','C','('],['d','D'],
@@ -43,7 +44,7 @@ if __name__ == '__main__':
   description='''Takes one or more words and generates possible leetified passwords.'''
 
   parser = argparse.ArgumentParser(description=description)
-  parser.add_argument('word',  metavar='word', type=str, help='Word used to generate the passwords' )
+  parser.add_argument('word',  metavar='word', type=str, help='Word used to generate the passwords', nargs="?" )
   parser.add_argument('-s',    action='store_true',      help='Show statistics')
   parser.add_argument('-v',    action='store_true',      help='Verbose')
   parser.add_argument('-l',    metavar='list', type=str, help='Supply new combination list' )
@@ -57,7 +58,15 @@ if __name__ == '__main__':
        print(leetlist)
 
   # Generate word list
-  wordlist=generate(args.word)
+  if args.word:
+    wordlist=generate(args.word)
+  else:
+    # Read from stdin
+    words=[]
+    for line in fileinput.input(): words.append(line.strip())
+    wordlist=[]
+    for word in words: wordlist.extend(generate(word))
+
   if args.s:
     print("Word length:            %s"%len(args.word))
     print("Number of combinations: %s"%len(wordlist))
