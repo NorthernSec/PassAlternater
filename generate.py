@@ -77,4 +77,4 @@ if __name__ == '__main__':
   # Save to file
   if args.o:
     f=open(args.o,'w')
-      f.write('\n'.join(wordlist))
+    f.write('\n'.join(wordlist))
