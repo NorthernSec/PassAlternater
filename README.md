@@ -26,3 +26,13 @@ Example
     7357
 
 **note** This project is written for Python 3.x. This might later be written to be both Python 2.x and 3.x compatible
+
+##Disclaimer
+This tool is for educational purposes only and is not intended to be put into practise unless you have authorised access to the system you are trying to break into
+
+## License
+This software is licensed under the "Original BSD License".
+```
+  (C) 2015  NorthernSec          https://github.com/NorthernSec
+  (c) 2015  Pieter-Jan Moreels   https://github.com/pidgeyl
+```
